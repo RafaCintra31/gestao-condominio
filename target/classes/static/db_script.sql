@@ -7,5 +7,5 @@ CREATE TABLE despesas (
     data_vencimento DATE          NOT NULL,
     data_pagamento  DATE          NULL,
     data_criacao    TIMESTAMP     NOT NULL DEFAULT NOW(),
-    status          ENUM('PAGO', 'NAO_PAGO', 'ATRASADO', 'CANCELADO') NOT NULL,
+    status          ENUM('PAGO', 'NAO_PAGO', 'ATRASADO', 'CANCELADO') NOT NULL
 );
