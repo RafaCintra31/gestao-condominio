@@ -4,6 +4,7 @@ import online.codemize.gestaocondominio.domain.Despesa;
 import online.codemize.gestaocondominio.domain.enums.StatusDespesa;
 import online.codemize.gestaocondominio.dto.DespesaRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,13 +15,12 @@ import java.util.Objects;
 @Component
 public class DespesaConverter {
 
-    private static String FORMATO_DATA_PADRAO = "dd/MM/yy";
+    private final static String FORMATO_DATA_PADRAO = "dd/MM/yy";
 
     public Despesa convert(DespesaRequest request){
         Despesa despesa = new Despesa();
-        despesa.setCategoria(request.categoria());
-        despesa.setDescricao(request.descricao());
-        despesa.setValorOriginal(request.valorOriginal());
+        BeanUtils.copyProperties(request, despesa);
+
         despesa.setDataVencimento(stringToLocalDate(request.dataVencimento()));
         despesa.setDataPagamento(stringToLocalDate(request.dataPagamento()));
         despesa.setDataCriacao(LocalDateTime.now());
