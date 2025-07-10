@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(of = "id")
 @Table(name = "despesas")
 public class Despesa {
 
@@ -49,6 +50,4 @@ public class Despesa {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusDespesa status;
-
-
 }
