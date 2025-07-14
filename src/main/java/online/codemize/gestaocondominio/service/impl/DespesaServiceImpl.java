@@ -1,4 +1,4 @@
-package online.codemize.gestaocondominio.service;
+package online.codemize.gestaocondominio.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import online.codemize.gestaocondominio.converter.DespesaConverter;
@@ -6,6 +6,7 @@ import online.codemize.gestaocondominio.domain.Despesa;
 import online.codemize.gestaocondominio.domain.enums.StatusDespesa;
 import online.codemize.gestaocondominio.dto.DespesaRequest;
 import online.codemize.gestaocondominio.repository.DespesaRepository;
+import online.codemize.gestaocondominio.service.DespesaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

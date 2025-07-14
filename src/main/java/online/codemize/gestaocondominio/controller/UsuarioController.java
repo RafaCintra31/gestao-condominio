@@ -1,5 +1,6 @@
 package online.codemize.gestaocondominio.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import online.codemize.gestaocondominio.domain.Usuario;
 import online.codemize.gestaocondominio.dto.UsuarioRequest;
@@ -16,11 +17,11 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    void criar(@RequestBody UsuarioRequest request){
+    void criar(@RequestBody @Valid UsuarioRequest request){
         service.criar(request);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{email}")
     @ResponseStatus(HttpStatus.OK)
     public Usuario getUsuario(@PathVariable String email){
         return  service.obterUser(email);
