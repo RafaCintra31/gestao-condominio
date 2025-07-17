@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -28,6 +30,11 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    private Boolean permiteEscrita;
+
+    private Boolean admin;
+
+    @OneToMany
+    @JoinColumn(name = "id_unidade")
+    private List<Unidade> unidade;
 
 }

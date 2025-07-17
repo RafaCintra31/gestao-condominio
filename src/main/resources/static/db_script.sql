@@ -1,3 +1,14 @@
+DROP DATABASE gestao_condominio_db;
+
+CREATE DATABASE IF NOR EXISTS gestao_condominio_db;
+
+USE gestao_condominio_db;
+
+DROP TABLE receitas;
+DROP TABLE despesas;
+DROP TABLE usuarios;
+DROP TABLE unidades;
+
 CREATE TABLE unidades(
     id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     tipo       VARCHAR(50)  NOT NULL                            ,
