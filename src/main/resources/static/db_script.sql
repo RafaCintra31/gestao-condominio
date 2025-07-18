@@ -1,29 +1,28 @@
 DROP DATABASE gestao_condominio_db;
 
-CREATE DATABASE IF NOR EXISTS gestao_condominio_db;
+CREATE DATABASE IF NOT EXISTS gestao_condominio_db;
 
 USE gestao_condominio_db;
 
 DROP TABLE receitas;
 DROP TABLE despesas;
-DROP TABLE usuarios;
 DROP TABLE unidades;
+DROP TABLE usuarios;
 
-CREATE TABLE unidades(
-    id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-    tipo       VARCHAR(50)  NOT NULL                            ,
-    registro  VARCHAR(255) NOT NULL
-);
-
-CRATE TABLE usuarios (
+CREATE TABLE usuarios (
     id              BIGINT          NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     nome            VARCHAR(255)    NOT NULL                            ,
     email           VARCHAR(255)    NOT NULL UNIQUE                     ,
     senha           VARCHAR(255)    NOT NULL                            ,
     numero_apto     VARCHAR(30)     NULL                                ,
-    id_unidade      BIGINT          NOT NULL                            ,
-    adin            BOOLEAN         NOT NULL DEFAULT false              ,
-    CONSTRAINT fk_usuarios_unidades FOREIGN KEY(id_unidade) REFERENCES unidades(id)
+    adin            BOOLEAN         NOT NULL DEFAULT false
+);
+
+CREATE TABLE unidades(
+    id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    tipo       VARCHAR(50)  NOT NULL                            ,
+    registro   VARCHAR(255) NOT NULL UNIQUE                     ,
+    id_usuario BIGINT
 );
 
 CREATE TABLE despesas (

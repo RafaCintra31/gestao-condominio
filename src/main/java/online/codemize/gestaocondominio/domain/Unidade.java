@@ -21,7 +21,8 @@ public class Unidade {
 
     private String registro;
 
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
 }

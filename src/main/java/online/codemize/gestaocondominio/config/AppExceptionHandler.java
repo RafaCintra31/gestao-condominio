@@ -1,6 +1,7 @@
 package online.codemize.gestaocondominio.config;
 
 import online.codemize.gestaocondominio.dto.ErrorResponse;
+import online.codemize.gestaocondominio.exception.AssociacaoUsuarioUnidadeException;
 import online.codemize.gestaocondominio.exception.CriacaoUsuarioException;
 import online.codemize.gestaocondominio.exception.UsuarioNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,15 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(UsuarioNotFoundException.class)
     public ResponseEntity<ErrorResponse> handler(UsuarioNotFoundException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorResponse(e.getMessage()));
     }
 
+    @ExceptionHandler(AssociacaoUsuarioUnidadeException.class)
+    public ResponseEntity<ErrorResponse> handler(AssociacaoUsuarioUnidadeException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorResponse(e.getMessage()));
+    }
 }

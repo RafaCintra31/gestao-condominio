@@ -33,8 +33,7 @@ public class Usuario {
 
     private Boolean admin;
 
-    @OneToMany
-    @JoinColumn(name = "id_unidade")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Unidade> unidade;
 
 }

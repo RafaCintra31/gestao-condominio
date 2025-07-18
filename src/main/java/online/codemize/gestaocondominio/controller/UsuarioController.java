@@ -34,4 +34,10 @@ public class UsuarioController {
        service.atualizarSenha(email, senha);
     }
 
+    @PutMapping("associar-unidade")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void associarUnidade(@RequestParam String email,
+                                @RequestParam String registro){
+        service.associarUnidade(email, registro);
+    }
 }

@@ -10,4 +10,7 @@ public interface UsuarioService {
     Usuario obterUsuario(String email);
 
     void atualizarSenha(String email, String novaSenha);
+
+    void associarUnidade(String emailUsuario, String registroUnidade);
+
 }
