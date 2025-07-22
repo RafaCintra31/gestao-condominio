@@ -38,6 +38,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Usuario obterUsuario(Long idUsuario) {
+        return repository
+                .findById(idUsuario)
+                .orElseThrow(UsuarioNotFoundException::new);
+    }
+
+    @Override
     public void atualizarSenha(String email, String novaSenha) {
         var usuario = obterUsuario(email);
         String senha = BCrypt.hashpw(novaSenha, BCrypt.gensalt());

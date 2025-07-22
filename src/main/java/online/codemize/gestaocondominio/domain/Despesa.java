@@ -18,13 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(of = "id")
 @Table(name = "despesas")
-public class Despesa {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Despesa extends Domain{
 
     @Column(nullable = false)
     private String categoria;
@@ -44,10 +39,11 @@ public class Despesa {
     @Column(name = "data_pagamento")
     private LocalDate dataPagamento;
 
-    @Column(name = "data_criacao")
-    private LocalDateTime dataCriacao;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusDespesa status;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 }

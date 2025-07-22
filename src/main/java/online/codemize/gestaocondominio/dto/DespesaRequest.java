@@ -1,6 +1,7 @@
 package online.codemize.gestaocondominio.dto;
 
-public record DespesaRequest(String categoria,
+public record DespesaRequest(Long idUsuario,
+                             String categoria,
                              String descricao,
                              Double valorOriginal,
                              Double valorPago,

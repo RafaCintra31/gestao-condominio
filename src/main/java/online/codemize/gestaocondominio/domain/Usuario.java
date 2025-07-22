@@ -12,13 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(of = "id")
 @Table(name = "usuarios")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Usuario extends Domain{
 
     @Column(nullable = false)
     private String nome;
@@ -30,10 +25,9 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-
     private Boolean admin;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Unidade> unidade;
+    private List<Unidade> unidades;
 
 }
