@@ -35,6 +35,6 @@ public class Receita extends Domain{
     private Unidade unidade;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuaria")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 }
