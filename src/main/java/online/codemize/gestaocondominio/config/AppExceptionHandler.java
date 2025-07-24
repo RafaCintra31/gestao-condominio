@@ -42,5 +42,11 @@ public class AppExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorResponse(e.getMessage()));
+
+    }@ExceptionHandler(SemAutorizacaoException.class)
+    public ResponseEntity<ErrorResponse> handler(SemAutorizacaoException e){
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorResponse(e.getMessage()));
     }
 }

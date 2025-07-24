@@ -1,6 +1,5 @@
 package online.codemize.gestaocondominio.config;
 
-import lombok.RequiredArgsConstructor;
 import online.codemize.gestaocondominio.oauth.CheckAuthenticationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +14,6 @@ public class Webconfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(oauthInterceptor).addPathPatterns("/**");
+//        registry.addInterceptor(oauthInterceptor).addPathPatterns("/**");
     }
 }
