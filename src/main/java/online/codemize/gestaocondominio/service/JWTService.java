@@ -7,6 +7,6 @@ public interface JWTService {
 
     String gerarTokenAcesso(Usuario usuario);
 
-    UsuarioPayload validarTokenExtrairPayload(String token);
+    void validarToken(String token);
 
 }

@@ -3,6 +3,7 @@ package online.codemize.gestaocondominio.controller;
 import lombok.RequiredArgsConstructor;
 import online.codemize.gestaocondominio.domain.Despesa;
 import online.codemize.gestaocondominio.dto.DespesaRequest;
+import online.codemize.gestaocondominio.oauth.PreAutorizado;
 import online.codemize.gestaocondominio.service.DespesaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +18,7 @@ public class DespesaContoller {
 
     private final DespesaService service;
 
+    @PreAutorizado
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarDespesa(@RequestBody DespesaRequest request) {
