@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import online.codemize.gestaocondominio.service.JWTService;
+import online.codemize.gestaocondominio.service.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -17,6 +18,8 @@ import java.util.Objects;
 public class CheckAuthenticationInterceptor implements HandlerInterceptor {
 
     private final JWTService jwtService;
+    private final UsuarioService usuarioService;
+    private final UsuarioAppContext usuarioAppContext;
 
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request,
@@ -30,7 +33,9 @@ public class CheckAuthenticationInterceptor implements HandlerInterceptor {
                     return true;
 
                 var token = getTokenFromRequest(request);
-                jwtService.validarToken(token);
+                var email = jwtService.validarTokenAndGetEmailUsuario(token);
+                var usuario = usuarioService.obterUsuario(email);
+                usuarioAppContext.setUsuario(usuario);
 
             }catch (Exception e){
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
